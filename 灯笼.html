@@ -1,0 +1,112 @@
+<!--
+ * @Description: 
+ * @Autor: Alfred
+ * @Date: 2022-06-28 15:50:04
+ * @FilePath: \vue-cli-5.0.8c:\Users\Administrator.DESKTOP-OK06T1R\Desktop\css-demo\灯笼.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    @keyframes denglong{
+        /* from表示动画的开始位置，也可以使用0%来表示。 */
+        0%{
+            margin-left: 0px;
+        }
+        /* to表示动画的结束位置，也可以使用100%来表示。 */
+        100%{
+            margin-left: 300px;
+        }
+    }
+    .box{
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .img-box{
+        height: 92px;
+        width: 92px;
+        position: relative;
+        overflow: hidden;
+    }
+    .img{
+        height: 92px;
+        width: 2300px;
+        position: absolute;
+        top: 0;
+    }
+    .dl {
+        height: 92px;
+        width: 92px;
+        position: absolute;
+    }
+</style>
+<body style="background: #000;overflow: hidden;" >
+    <div class="box" >
+        <div id="dl1" class="dl" >
+            <div id="imgBox" class="img-box" >
+                <img id="img" class="img" src="./img/灯笼/hz1.png" alt="" srcset="">
+            </div>
+        </div>
+        <div id="dl2" class="dl" >
+            <div id="imgBox" class="img-box" >
+                <img id="img" class="img" src="./img/灯笼/hz1.png" alt="" srcset="">
+            </div>
+        </div>
+        <div id="dl3" class="dl" >
+            <div id="imgBox" class="img-box" >
+                <img id="img" class="img" src="./img/灯笼/hz1.png" alt="" srcset="">
+            </div>
+        </div>
+        <div id="dl4" class="dl" >
+            <div id="imgBox" class="img-box" >
+                <img id="img" class="img" src="./img/灯笼/hz1.png" alt="" srcset="">
+            </div>
+        </div>
+        <div id="dl5" class="dl" >
+            <div id="imgBox" class="img-box" >
+                <img id="img" class="img" src="./img/灯笼/hz1.png" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let imgList = document.querySelectorAll('.dl img')
+    console.log(imgList)
+    imgList.forEach((value)=>{
+        let i = Math.round(Math.random() * 24)
+        setInterval(()=>{
+            value.style.left = i * -92 + 'px'
+            i++
+            if(i == 25){
+                i = 0
+            }
+        }, 25)
+    })
+    let dlList = document.querySelectorAll('.box>div')
+    console.log(dlList)
+    dlList.forEach((value)=>{
+        value.style.top = 1000 + 'px'
+        value.style.left = Math.random() * 1500 + 'px'
+        setTimeout(()=>{
+            value.style.animation = 'denglong 3s ease-in-out 1s infinite alternate'
+            setInterval(()=>{
+                if(value.style.top.split('px')[0] < -100){
+                    value.style.top = '1000px'
+                    value.style.left = Math.random() * 1500 + 'px'
+                }
+                value.style.top = value.style.top.split('px')[0]-2 + 'px'
+            }, 25)
+        },Math.random() * 6000)
+    })
+</script>
+</html>

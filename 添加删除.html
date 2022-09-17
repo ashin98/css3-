@@ -1,0 +1,75 @@
+<!--
+ * @Description: 
+ * @Autor: Alfred
+ * @Date: 2022-08-30 09:12:17
+ * @FilePath: \bdp-webc:\Users\Administrator.DESKTOP-OK06T1R\Desktop\css.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box-btn{
+            padding: 20px;
+            /* margin: 30px; */
+        }
+        .box-btn button{
+            margin-right: 20px;
+        }
+        .aaa{
+            width: 0;
+            height: 0;
+            transition: 1s;
+            border-radius: 4px;
+            background: #000;
+            margin: 0 auto 0px;
+        }
+        .box-node{
+            border-radius: 8px;
+            border: 1px solid #666;
+            padding: 10px 10px 0px;
+            display: inline-block;
+        }
+        .box-node .node{
+            width: 200px;
+            height: 30px;
+            margin: 0 auto 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-btn" >
+        <button id="add" onclick="add()" >添加</button>
+        <button id="del" onclick="del()" >删除</button>
+    </div>
+    <div id="boxNode" class="box-node" >
+        <div class="aaa node" ></div>
+        <div class="aaa node" ></div>
+        <div class="aaa node" ></div>
+    </div>
+</body>
+<script>
+    let boxNode = document.getElementById('boxNode')
+    let nodeArr = document.getElementsByClassName('node')
+    console.log(boxNode)
+    console.log(nodeArr)
+    function add(){
+        let div = document.createElement('div')
+        div.classList.add('aaa')
+        boxNode.appendChild(div)
+        div.offsetHeight
+        div.classList.add('node')
+    }
+    function del(){
+        if(nodeArr.length == 0) return
+        let div = nodeArr[nodeArr.length-1]
+        div.classList.remove("node");
+        setTimeout(()=>{
+            boxNode.removeChild(div)
+        },1000)
+    }
+</script>
+</html>

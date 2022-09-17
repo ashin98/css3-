@@ -1,0 +1,81 @@
+<!--
+ * @Description: 
+ * @Autor: Alfred
+ * @Date: 2022-08-25 11:53:06
+ * @FilePath: \bdp-webc:\Users\Administrator.DESKTOP-OK06T1R\Desktop\html.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes test1{
+            /* from表示动画的开始位置，也可以使用0%来表示。 */
+            0%{
+                transform:rotateX(60deg) rotateY(-60deg) rotateZ(0deg);
+            }
+            /* to表示动画的结束位置，也可以使用100%来表示。 */
+            100%{
+                transform:rotateX(60deg) rotateY(-60deg) rotateZ(360deg);
+            }
+        }
+        @keyframes test2{
+            /* from表示动画的开始位置，也可以使用0%来表示。 */
+            0%{
+                transform:rotateX(60deg) rotateY(60deg) rotateZ(120deg);
+            }
+            /* to表示动画的结束位置，也可以使用100%来表示。 */
+            100%{
+                transform:rotateX(60deg) rotateY(60deg) rotateZ(480deg);
+            }
+        }
+        @keyframes test3{
+            /* from表示动画的开始位置，也可以使用0%来表示。 */
+            0%{
+                transform:rotateX(70deg) rotateY(0deg) rotateZ(240deg);
+            }
+            /* to表示动画的结束位置，也可以使用100%来表示。 */
+            100%{
+                transform:rotateX(70deg) rotateY(0deg) rotateZ(600deg);
+            }
+        }
+        .sword {
+            position: relative;
+            margin: 200px auto;
+            width: 64px;
+            height: 64px;
+        }
+        .sword span{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border-bottom: 3px solid #fff;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        .span1{
+            transform:rotateX(60deg) rotateY(-60deg) rotateZ(0deg);
+            animation: test1 1.4s linear 0s infinite normal;
+        }
+        .span2{
+            transform:rotateX(60deg) rotateY(60deg) rotateZ(120deg);
+            animation: test2 1.4s linear 0s infinite normal;
+        }
+        .span3{
+            transform:rotateX(60deg) rotateY(0deg) rotateZ(240deg);
+            animation: test3 1.4s linear 0s infinite normal;
+        }
+    </style>
+</head>
+<body style="background: #000;">
+    <div class="sword">
+        <span class="span1"></span>
+        <span class="span2"></span>
+        <span class="span3"></span>
+    </div>
+</body>
+</html>

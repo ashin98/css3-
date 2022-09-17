@@ -1,0 +1,71 @@
+<!--
+ * @Description: 
+ * @Autor: Alfred
+ * @Date: 2022-09-15 16:40:20
+ * @FilePath: \super-station-platform-webc:\Users\Administrator.DESKTOP-OK06T1R\Desktop\旋转动画.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @keyframes test {
+
+        /* to表示动画的结束位置，也可以使用0%来表示。 */
+        from {
+            transform: rotateZ(0deg);
+        }
+
+        /* to表示动画的结束位置，也可以使用100%来表示。 */
+        to {
+            transform: rotateZ(360deg);
+        }
+    }
+
+    .box {
+        margin: 0 auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 4px solid #55f;
+        animation: test 10s linear 0s infinite normal;
+        transform: rotateZ(0deg);
+        position: relative;
+    }
+
+    .div1 {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: aquamarine;
+        top: -15px;
+        left: calc(50% - 15px);
+    }
+
+    .div2 {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: aquamarine;
+        top: 10px;
+        left: 10px;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="div1">
+
+        </div>
+        <div class="div2">
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!--
+ * @Description: 
+ * @Autor: Alfred
+ * @Date: 2022-07-11 15:34:15
+ * @FilePath: \baoanc:\Users\Administrator.DESKTOP-OK06T1R\Desktop\demo集合\杨辉三角.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+<style>
+    /* .ele{
+        position: relative;
+        width: 50px;
+        height: 86.6px;
+        margin: 50px auto;
+        background: #0ff;
+    }
+    .ele:after,.ele:before{
+        content: '';
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-width: 43.3px 25px;
+        border-style: solid;
+        top: 0;
+    }
+    .ele:before{
+        right: 50px;
+        border-color: transparent #0ff transparent transparent;
+    }
+    .ele:after{
+        left: 50px;
+        border-color: transparent transparent transparent #0ff;
+    } */
+    .ele-box{
+        display: flex;
+        justify-content: center;
+    }
+    .ele{
+        position: relative;
+        width: 87px;
+        height: 77px;
+        transform: translate(-50%, -50%);
+        transform: rotate(30deg);
+    }
+    .one,.two,.three{
+        position: absolute;
+        left: 25px;
+        top: 0;
+        width: 50px;
+        height: 86.6px;
+        border-top: 1px solid #77f;
+        border-bottom: 1px solid #77f;
+    }
+    .two{
+        transform: translate(-50%, -50%);
+        transform: rotate(60deg);
+    }
+    .three{
+        transform: translate(-50%, -50%);
+        transform: rotate(300deg);
+    }
+    .one{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .text{
+        transform: translate(-50%, -50%);
+        transform: rotate(-30deg);
+    }
+</style>
+<body>
+    <div id="App" >
+        <input v-model="value" > <button @click="btn" > 生成三角 </button>
+        <div :style="{'min-width': arr.length*87 +'px'}">
+            <div class="ele-box"  v-for="(value,index) of arr" :key="index" >
+                <div class="ele" v-for="(val,idx) of value">
+                    <div class="one">
+                        <div class="text">{{val}}</div>
+                    </div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el: '#App',
+        data: {
+            value: 5,
+            arr: []
+        },
+        methods: {
+            btn(){
+                this.arr = []
+                for(let i=0;i<this.value;i++){
+                    let arr1 = []
+                    if(i==0){
+                        arr1.push(1)
+                    }else{
+                        this.arr[i-1].forEach((value,index)=>{
+                            if(index == 0) {
+                                arr1.push(value)
+                            }else{
+                                arr1.push(value + this.arr[i-1][index-1])
+                            }
+                            if (index+1 == this.arr[i-1].length){
+                                arr1.push(1)
+                            }
+                        })
+                    }
+                    this.arr.push(arr1)
+                }
+            }
+        },
+    })
+</script>
+</html>

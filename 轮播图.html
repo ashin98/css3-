@@ -1,0 +1,224 @@
+<!--
+ * @Author: 刘承广 chengguang_liu@cas-pe.com
+ * @Date: 2022-06-08 08:59:33
+ * @LastEditors: 刘承广 chengguang_liu@cas-pe.com
+ * @LastEditTime: 2022-06-08 12:16:36
+ * @FilePath: \undefinedc:\Users\Administrator.DESKTOP-OK06T1R\Desktop\轮播图.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .item-box{
+        margin: 100px auto;
+        width: 400px;
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+        /* display: none; */
+    }
+    .item{
+        width: 2000px;
+        height: 300px;
+        display: inline-block;
+        font-size: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .item>div{
+        display: inline-block;
+        width: 400px;
+        height: 300px;
+        line-height: 300px;
+        font-size: 40px;
+        text-align: center;
+        color: #fff;
+        font-weight: 700;
+    }
+    .item>div:nth-child(1){
+        background-color: #090;
+    }
+    .item>div:nth-child(2){
+        background-color: #099;
+    }    
+    .item>div:nth-child(3){
+        background-color: #909;
+    }    
+    .item>div:nth-child(4){
+        background-color: #990;
+    }
+    .item>div:nth-child(5){
+        background-color: #090;
+    }
+    /* .item>div:nth-child(6){
+        background-color: #099;
+    } */
+    .item-box>div:nth-child(2){
+        position: absolute;
+        left: 160px;
+        top: 240px;
+        width: 80px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .item-box>div:nth-child(2)>div{
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+    }
+    .item-box>div:nth-child(3){
+        width: 30px;
+        height: 60px;
+        position: absolute;
+        top: 120px;
+        left: 30px;
+        background-color: #a33;
+    }
+    .item-box>div:nth-child(4){
+        width: 30px;
+        height: 60px;
+        position: absolute;
+        top: 120px;
+        right: 30px;
+        background-color: #a33;
+    }
+
+</style>
+<body>
+    <div class="item-box" >
+        <div id="item" class="item" style="left: 0px" >
+            <div>0</div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>            
+            <div>0</div>
+        </div>
+        <div id="btn" >
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="left" ></div>
+        <div id="right" ></div>
+    </div>
+</body>
+<script>
+    // 按钮位置
+    let i = 0
+
+    // 左侧按钮
+    let left = document.getElementById('left') 
+
+    // 右侧按钮
+    let right = document.getElementById('right')
+    
+    // 轮播图
+    let item = document.getElementById('item')
+
+    
+    // 中间四个按钮  一次找到四个  然后循环绑定点击事件
+    let btnList = document.querySelectorAll('#btn>div')
+
+    btnList.forEach((value,index)=>{
+        value.style.backgroundColor = '#999'
+    })
+    btnList[0].style.backgroundColor = '#fff'
+
+    // 封装的切换方法  ==>  用了闭包
+    let fun = () => {
+        var type = true
+        var time = 1000
+        return (value) => {
+            console.log('进入')
+            if (type){
+                if(value=='+'){
+                    i++
+                }else if(value=='-'){
+                    i--
+                }else{
+                    i = value
+                }
+                if(i== -1){
+                    item.style.transition = ''
+                    item.style.left = -1600 + 'px'
+                    i = 3
+                }
+                setTimeout(()=>{
+                    time = 1000
+                    type = false
+                    item.style.transition = 'all 1s'
+                    item.style.left = (i * -400) + 'px'
+                    if(i==4){
+                        setTimeout(()=>{
+                            item.style.transition = ''
+                            i = 0
+                            item.style.left = (i * -400) + 'px'
+                        },1000)
+                    }
+
+                    let abc = setInterval(()=>{
+                        time -= 10
+                    },10)
+                    setTimeout(()=>{
+                        type = true
+                        clearInterval(abc)
+                    },1010)
+                    btnList.forEach((value,index)=>{
+                        value.style.backgroundColor = '#999'
+                    })
+                    if(i>3){
+                        btnList[0].style.backgroundColor = '#fff'
+                    }else if(i<0){
+                        btnList[3].style.backgroundColor = '#fff'
+                    }else{
+                        btnList[i].style.backgroundColor = '#fff'
+                    }
+                },10)
+            }else{
+                console.log('请稍等')
+                console.log(time + '毫秒 后可点击')
+            }
+        }
+    }
+    
+    // 抛出方法
+    let show = fun()
+
+    // 定时轮播
+    let automation = setInterval(()=>{
+        show('+')
+    },3000)
+
+    // 右轮播按钮
+    right.onclick = ()=>{
+        console.log('right')
+        show('+')
+    }
+
+    // 左轮播按钮
+    left.onclick = ()=>{
+        console.log('left')
+        show('-')
+    }
+
+
+    btnList.forEach((value,index)=>{
+        value.onclick = () => {
+            show(index)
+        }
+    })
+
+</script>
+</html>

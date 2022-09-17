@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rc{
+            width: 900px;
+            height: 1000px;
+            display: flex;
+            list-style-type: none;
+            margin: auto;
+        }
+        .rc li{
+            margin-right: 20px;
+        }
+        .ran div{
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            margin-top: 10px;
+        }
+        .lu{
+            background-color: aquamarine !important;
+            border: 1px solid aquamarine;
+        }
+        img{
+            display: block;
+            width: 150px;
+            height: 150px;
+            margin-top: 10px;
+        }
+        h1{
+            display: block;
+            width: 150px;
+            height: 145px;
+            margin-top: 10px;
+            text-align: center;
+            line-height: 150px;
+            border: 2px solid blueviolet;
+            cursor: pointer;
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="rc">
+        <li class="ran">
+                <img src="https://img.alicdn.com/imgextra/i3/35663478/O1CN01Lg3Tz51bYyGKP1Dlp_!!0-saturn_solar.jpg_468x468q75.jpg_.webp" alt="" class="options" data-tip="苹果手机">
+                <h2 class="options" style="display: block;width: 150px;height: 145px;margin-top: 10px;text-align: center;line-height: 150px;margin-bottom: 0px;" data-tip="谢谢惠顾">谢谢惠顾</h2>
+                <img src="https://img.alicdn.com/imgextra/i1/28226613/O1CN01M9dOrv1yinvwsKxo7_!!0-saturn_solar.jpg_468x468q75.jpg_.webp" alt=""
+                class="options" data-tip="电视机">
+        </li>
+        <li class="ran">
+            <img src="https://g-search1.alicdn.com/img/bao/uploaded/i4/imgextra/i4/26758754/O1CN01rkBWMR2EXNmVcguf6_!!0-saturn_solar.jpg_250x250.jpg" alt="" class="options" data-tip="台式电脑">
+            <h1 id="chou">抽奖</h1>
+                <img src="https://g-search1.alicdn.com/img/bao/uploaded/i4/imgextra/i1/114749949/O1CN017MOjKn2NMhEP37LnI_!!0-saturn_solar.jpg_250x250.jpg" alt=""
+                class="options" data-tip="吃鸡必备主机">
+        </li>
+        <li class="ran">
+            <img src="https://img.alicdn.com/imgextra/i4/113891281/O1CN01Yi0dFZ1LKk70yAKvY_!!0-saturn_solar.jpg_468x468q75.jpg_.webp" alt="" class="options" data-tip="美的空调">
+                <img src="https://g-search1.alicdn.com/img/bao/uploaded/i4/imgextra/i2/28808769/O1CN014Uz0CT2EeFs0GE5W7_!!0-saturn_solar.jpg_250x250.jpg" alt="" class="options" data-tip="吃鸡全套">
+                <img src="https://img.alicdn.com/imgextra/i4/14475171/O1CN0199aWlE1o4MpQy6FZP_!!0-saturn_solar.jpg_468x468q75.jpg_.webp" alt=""
+                class="options" data-tip="美的冰箱">
+        </li>
+    </ul>
+</body>
+</html>
+<script>
+    var chounum=3
+    let timer=null
+    document.getElementById('chou').onclick=()=>{
+        if(chounum==0){
+            alert('最多只能抽奖三次')
+            return
+        }
+        chounum--
+        timer=setInterval(shi, 500)
+    }
+    let num=0
+    let options = document.getElementsByClassName('options');
+    // let timer=timer=setInterval(, 1000)
+    let shi=function () {
+//  console.log(options[1].style);
+
+//随机产生一个0 - 7 的数字 通过该数字作为数组的下标来获取到div
+ let ran = Math.round(Math.random() * (8 - 0) + 0);
+ //round是因为Math.random() * (7 - 0) + 0)取出的随机数是含小数的一串数字，所以需要取整
+
+ //改变选中的元素背景颜色之前，将所有元素的背景颜色恢复
+ for (let i = 0; i < options.length; i++) {
+ options[i].style.border = '';
+ options[i].style.transform=''
+ }
+
+ //给选中的元素设置一个背景颜色
+ options[ran].style.border = '2px solid blue';
+ options[ran].style.transform = 'scale(1.09)';
+ num++;
+//  console.log(options[ran].dataset.tip);
+// console.log(options[ran].style);
+ //给定时器一个时间，到时间停止定时器
+ if(num == 10){
+ clearInterval(timer)
+ setTimeout(function(){
+    alert('恭喜你抽中了'+options[ran].dataset.tip)
+    num=0
+    timer=null
+ },200)
+ }
+
+}
+</script>

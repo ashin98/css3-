@@ -1,0 +1,83 @@
+<!--
+ * @Description: 
+ * @Autor: Alfred
+ * @Date: 2022-08-12 11:32:40
+ * @FilePath: \atmospheric-of-platformc:\Users\Administrator.DESKTOP-OK06T1R\Desktop\html.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes test{
+            from{
+                width: 50px;
+                height: 50px;
+                opacity: 1;
+                border: 20px solid #5aa;
+            }
+        /* to表示动画的结束位置，也可以使用100%来表示。 */
+            to{
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+                border: 0px solid #5aa;
+            }
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: calc(50% - 100px);
+            top: 100px;
+        }
+        .add{
+            width: 50px;
+            height: 50px;
+            border: 20px solid #5aa;
+            border-radius: 50%;
+            box-sizing: border-box;
+            animation: test 1.4s ease-in 0s infinite normal;
+        }
+        .add1{
+            width: 50px;
+            height: 50px;
+            border: 20px solid #5aa;
+            border-radius: 50%;
+            box-sizing: border-box;
+            animation: test 1.4s ease-in 0.7s infinite normal;
+        }
+        .add2{
+            width: 50px;
+            height: 50px;
+            border: 20px solid #5aa;
+            border-radius: 50%;
+            box-sizing: border-box;
+            /* animation: test 1s ease-in 0.5s infinite normal; */
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="add">
+
+        </div>
+    </div>
+    <div class="box">
+        <div class="add1">
+
+        </div>
+    </div>
+    <div class="box">
+        <div class="add2">
+
+        </div>
+    </div>
+</body>
+</html>

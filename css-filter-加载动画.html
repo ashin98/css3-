@@ -1,0 +1,61 @@
+<!--
+ * @Description: 
+ * @Autor: Alfred
+ * @Date: 2022-08-08 14:39:33
+ * @FilePath: \main-projectc:\Users\Administrator.DESKTOP-OK06T1R\Desktop\css-filter-加载动画.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @keyframes test{
+        /* from表示动画的开始位置，也可以使用0%来表示。 */
+        from{
+            left: 100px;
+        }
+        /* to表示动画的结束位置，也可以使用100%来表示。 */
+        to{
+            left: 600px;
+        }
+    }
+    .circle-box{
+        margin: 100px auto;
+        width: 800px;
+        height: 200px;
+        position: relative;
+        filter: contrast(30);
+        background-color: white;
+        overflow: hidden;
+    }
+    .circle-big{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin: 0 auto;
+        background-color: #000;
+        filter: blur(20px)
+    }
+    .circle-small{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        top: 50px;
+        left: 100px;
+        background-color: #000;
+        animation: test 1.5s ease-in-out 0s infinite alternate;
+        filter: blur(20px)
+    }
+</style>
+<body>
+    <div class="circle-box">
+        <div class="circle-big"></div>
+        <div class="circle-small"></div>
+    </div>
+</body>
+</html>
